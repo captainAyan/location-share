@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18" />
+        <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/drawable/ic_qr_code_scanner.xml" value="0.2385" />
+        <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/layout-v28/activity_add_friend.xml" value="0.23125" />
+        <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/layout/activity_add_friend.xml" value="0.25" />
+        <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/layout/activity_choose_friend.xml" value="0.33" />
+        <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/layout/activity_maps.xml" value="0.30104166666666665" />
+        <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/layout/activity_qrcode.xml" value="0.33" />
+        <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/layout/card_friend.xml" value="0.37083333333333335" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
