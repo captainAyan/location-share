@@ -33,6 +33,8 @@ class LocationService: Service() {
     private val NOTIFICATION_ID: Int = 1
     private val NOTIFICATION_CONTENT_TITLE: String = "Sharing Location"
     private val NOTIFICATION_CONTENT_TEXT: String = "Your location is currently being shared"
+    private val LOCATION_UPDATE_DELAY: Long = 30000
+    private val LOCATION_UPDATE_DELAY_FASTEST: Long = 2000
 
     private var locationSender: LocationSender? = null
     private var uuid: String? = null
@@ -72,8 +74,8 @@ class LocationService: Service() {
 
         locationRequest = LocationRequest.create();
         locationRequest.priority = Priority.PRIORITY_HIGH_ACCURACY
-        locationRequest.interval = 5000
-        locationRequest.fastestInterval = 2000
+        locationRequest.interval = LOCATION_UPDATE_DELAY
+        locationRequest.fastestInterval = LOCATION_UPDATE_DELAY_FASTEST
 
         if (ActivityCompat.checkSelfPermission(
                 this,
