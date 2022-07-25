@@ -1,5 +1,6 @@
 package com.github.captainayan.locationshare.android
 
+import Utility
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -17,6 +18,8 @@ import java.net.URISyntaxException
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+
+    private val LOCATION_NOISE_THRESHOLD: Double = 0.0004 // IMPORTANT tune the threshold
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
@@ -80,27 +83,43 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun newLocation (lat:Double, lng:Double) {
         Log.e("MAP ACTIVITY", "onCreate: GOT LOCATION")
+
         val location = LatLng(lat, lng)
 
         runOnUiThread {
+
             if (polylineOptions.points.size == 0) {
-                mMap.addMarker(MarkerOptions().position(location).title("Starting Location")
+                currentMarker = mMap.addMarker(MarkerOptions().position(location)
+                    .title("Starting Location")
                     .icon(BitmapDescriptorFactory
-                    .defaultMarker(BitmapDescriptorFactory.HUE_AZURE)))
+                        .defaultMarker(BitmapDescriptorFactory.HUE_AZURE)))!!
+
+                polylineOptions.add(location).color(resources.getColor(R.color.white, null))
             }
             else {
                 zoom = mMap.cameraPosition.zoom
 
-                if (this::currentMarker.isInitialized)
+                val distance: Double = Utility.getLocationDifference(currentMarker.position.latitude,
+                    currentMarker.position.longitude,
+                    lat,
+                    lng)
+
+
+                if(distance > LOCATION_NOISE_THRESHOLD) {
+
                     currentMarker.remove()
 
-                currentMarker =
-                    mMap.addMarker(MarkerOptions().position(location).title("Current Location")
-                        .icon(BitmapDescriptorFactory
-                        .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))!!
+                    currentMarker =
+                        mMap.addMarker(MarkerOptions().position(location).title("Current Location")
+                            .icon(BitmapDescriptorFactory
+                                .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))!!
+
+                    polylineOptions.add(location).color(resources.getColor(R.color.white, null))
+                }
+
             }
 
-            polylineOptions.add(location).color(resources.getColor(R.color.white, null))
+//            polylineOptions.add(location).color(resources.getColor(R.color.white, null))
             mMap.addPolyline(polylineOptions)
 
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, zoom))
