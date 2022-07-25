@@ -2,14 +2,18 @@ package com.github.captainayan.locationshare.android;
 
 import android.content.Intent
 import android.os.Bundle;
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.MaterialToolbar
 
 class ChooseFriendActivity: AppCompatActivity() {
+
+    private lateinit var toolbar: MaterialToolbar
 
     private lateinit var friendDao: DB.FriendDao
     private lateinit var friendList: ArrayList<DB.Friend>
@@ -32,6 +36,12 @@ class ChooseFriendActivity: AppCompatActivity() {
         )
 
         recyclerView.adapter = adapter
+
+        toolbar = findViewById<View>(R.id.topAppBar) as MaterialToolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "Choose A Friend"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener { this@ChooseFriendActivity.finish() }
     }
 
 
