@@ -2,4 +2,5 @@
     <string name="app_name">Location Share</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="title_text">Track Your <b>Location</b></string>
+    <string name="uuid_text">This is the UUID (Universally Unique Identifiers) that was generated on the first time you opened the app. Share this UUID with people whom you want to share your location with. You can regenerate the UUID when ever you want.</string>
 </resources>
