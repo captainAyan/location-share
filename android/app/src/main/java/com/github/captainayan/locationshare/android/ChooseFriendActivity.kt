@@ -2,6 +2,8 @@ package com.github.captainayan.locationshare.android;
 
 import android.content.Intent
 import android.os.Bundle;
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +60,20 @@ class ChooseFriendActivity: AppCompatActivity() {
         adapter.mList.removeAt(index)
         adapter.notifyItemRemoved(index)
         adapter.notifyItemRangeChanged(index, adapter.mList.size)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.choose_friend_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        if (item.itemId == R.id.add_friend) {
+            startActivity(Intent(this@ChooseFriendActivity, AddFriendActivity::class.java))
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18" />
+        <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/drawable/ic_add.xml" value="0.2075" />
         <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/drawable/ic_cog.xml" value="0.236" />
         <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/drawable/ic_qr_code_scanner.xml" value="0.2385" />
         <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/drawable/person.xml" value="0.236" />
@@ -16,6 +17,7 @@
         <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/layout/activity_maps.xml" value="0.30104166666666665" />
         <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/layout/activity_qrcode.xml" value="0.25" />
         <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/layout/card_friend.xml" value="0.37083333333333335" />
+        <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/menu/choose_friend_menu.xml" value="0.371875" />
         <entry key="..\:/MiscProjects/location-share/android/app/src/main/res/menu/main_menu.xml" value="0.22864583333333333" />
       </map>
     </option>
