@@ -27,7 +27,7 @@ class ChooseFriendActivity: AppCompatActivity() {
         setContentView(R.layout.activity_choose_friend);
 
         friendDao = DB.FriendDatabase.getDatabase(this).friendDao()
-        friendList = friendDao.getAll() as ArrayList<DB.Friend>
+        friendList = ArrayList<DB.Friend>()
 
         recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -46,6 +46,14 @@ class ChooseFriendActivity: AppCompatActivity() {
         toolbar.setNavigationOnClickListener { this@ChooseFriendActivity.finish() }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        adapter.mList.clear()
+        adapter.mList.addAll(friendDao.getAll() as ArrayList<DB.Friend>)
+
+        adapter.notifyItemRangeChanged(0, adapter.mList.size)
+    }
 
     private fun onTrackButtonClick(position: Int) {
         friendList[position].uuid
