@@ -3,10 +3,13 @@ package com.github.captainayan.locationshare.android
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
+import com.google.android.material.appbar.MaterialToolbar
 import java.util.*
 
 
@@ -14,10 +17,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
 
     private val TAG: String = "MAIN ACTIVITY"
 
+    private lateinit var toolbar: MaterialToolbar
+
     private lateinit var trackFriend: Button
     private lateinit var trackerBtn: Button
-    private lateinit var addFriend: Button
-    private lateinit var viewQRCode: Button
 
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -30,15 +33,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
             sharedPreferences.edit().putString("uuid", UUID.randomUUID().toString()).apply()
         }
 
+        toolbar = findViewById<MaterialToolbar>(R.id.topAppBar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = ""
+
         trackFriend = findViewById<Button>(R.id.track_a_friend_btn)
         trackerBtn = findViewById<Button>(R.id.tracker_btn)
-        addFriend = findViewById<Button>(R.id.add_friend_btn)
-        viewQRCode = findViewById<Button>(R.id.view_qr_code_btn)
 
         trackFriend.setOnClickListener(this)
         trackerBtn.setOnClickListener(this)
-        addFriend.setOnClickListener(this)
-        viewQRCode.setOnClickListener(this)
 
         if(!LocationService.IS_SERVICE_RUNNING) trackerBtn.text="Start Tracker"
         else trackerBtn.text="Stop Tracker"
@@ -60,14 +63,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
                 (view as Button).text="Start Tracker"
             }
         }
-        else if(addFriend.id == view?.id) {
-            val intent: Intent = Intent(this, AddFriendActivity::class.java)
-            startActivity(intent)
-        }
-        else if(viewQRCode.id == view?.id) {
-            val intent: Intent = Intent(this, QRCodeActivity::class.java)
-            startActivity(intent)
-        }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        if (item.itemId == R.id.main_menu_settings) {
+            startActivity(Intent(this@MainActivity, QRCodeActivity::class.java))
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

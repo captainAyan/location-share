@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Location Share</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_text">Track Your <b>Location</b></string>
 </resources>
