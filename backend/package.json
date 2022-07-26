@@ -5,6 +5,9 @@
   "main": "server.js",
   "devDependencies": {},
   "description": "",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "node server.js"
   },
