@@ -1,11 +1,16 @@
 package com.github.captainayan.locationshare.android;
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.google.android.material.appbar.MaterialToolbar
@@ -44,7 +49,13 @@ class QRCodeActivity : AppCompatActivity(){
             sharedPreferences.edit().putString("uuid", UUID.randomUUID().toString()).apply()
             uuid = sharedPreferences.getString("uuid", "").toString()
             showQRCode(uuid)
-       }
+        }
+        
+        uuidTV.setOnLongClickListener {
+            copyUuid(uuidTV.text.toString())
+            Toast.makeText(this, "UUID copied", Toast.LENGTH_SHORT).show()
+            true
+        }
 
         toolbar = findViewById<View>(R.id.topAppBar) as MaterialToolbar
         setSupportActionBar(toolbar)
@@ -63,5 +74,11 @@ class QRCodeActivity : AppCompatActivity(){
         val bitmap:Bitmap = encoder.createBitmap(matrix)
 
         qrCodeIV.setImageBitmap(bitmap)
+    }
+
+    private fun copyUuid(text: CharSequence) {
+        val clipboard: ClipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip: ClipData = ClipData.newPlainText("copy text", text)
+        clipboard.setPrimaryClip(clip)
     }
 }
