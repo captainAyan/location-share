@@ -29,7 +29,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var zoom:Float = 15.0f
 
     private lateinit var uuid: String
-    private var url: String = "http://192.168.0.105:4000/?uuid="
+    private var url: String = BuildConfig.SERVER_BASE_URL+"/?uuid="
     private var mSocket: Socket? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
