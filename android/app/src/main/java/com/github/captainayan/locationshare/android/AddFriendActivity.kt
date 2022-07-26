@@ -6,12 +6,15 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
+import com.google.android.material.appbar.MaterialToolbar
 
 import com.google.android.material.textfield.TextInputEditText;
 import io.github.g00fy2.quickie.QRResult
 import io.github.g00fy2.quickie.ScanQRCode
 
 class AddFriendActivity: AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var toolbar: MaterialToolbar
 
     private lateinit var nameInput: TextInputEditText;
     private lateinit var uuidInput: TextInputEditText;
@@ -38,6 +41,11 @@ class AddFriendActivity: AppCompatActivity(), View.OnClickListener {
         qrCodeBtn.setOnClickListener(this)
         submitBtn.setOnClickListener(this)
 
+        toolbar = findViewById<View>(R.id.topAppBar) as MaterialToolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = ""
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener { this@AddFriendActivity.finish() }
     }
 
     private fun handleResult(result: QRResult) {
