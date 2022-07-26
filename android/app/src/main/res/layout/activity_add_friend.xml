@@ -10,16 +10,15 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        style="@style/Widget.AppBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
-            style="@style/Widget.AppBar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="Add a Friend" />
+            android:layout_height="?attr/actionBarSize" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -28,13 +27,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-        app:layout_constraintBottom_toTopOf="@id/submit_btn"
-        android:layout_margin="16dp">
+        app:layout_constraintBottom_toTopOf="@id/submit_btn">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp">
 
             <TextView
                 android:id="@+id/heading"
@@ -53,6 +53,7 @@
                 style="@style/TextAppearance.MaterialComponents.Body2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
                 android:text="Lorem ipsum dolor sit amet,  adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  "
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -108,9 +109,10 @@
             <ImageButton
                 android:id="@+id/qr_code_btn"
                 android:layout_width="64dp"
-                android:layout_height="0dp"
-                android:backgroundTint="?colorPrimary"
+                android:layout_height="64dp"
+                android:layout_marginTop="4dp"
                 android:src="@drawable/ic_qr_code_scanner"
+                android:backgroundTint="@color/black"
                 app:layout_constraintTop_toTopOf="@id/uuid_txt_fld"
                 app:layout_constraintBottom_toBottomOf="@id/uuid_txt_fld"
                 app:layout_constraintEnd_toEndOf="parent"/>
@@ -118,8 +120,9 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/submit_btn"
+        style="@style/ButtonPrimary"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:text="Add A Friend"
