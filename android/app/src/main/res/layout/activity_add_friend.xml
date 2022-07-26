@@ -109,7 +109,8 @@
             <ImageButton
                 android:id="@+id/qr_code_btn"
                 android:layout_width="64dp"
-                android:layout_height="0dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="4dp"
                 android:src="@drawable/ic_qr_code_scanner"
                 android:backgroundTint="@color/black"
                 app:layout_constraintTop_toTopOf="@id/uuid_txt_fld"
