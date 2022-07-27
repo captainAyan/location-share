@@ -30,7 +30,7 @@ class LocationSender(retrofit: Retrofit) {
     }
 
     companion object {
-        private const val baseUrl:String = BuildConfig.SERVER_BASE_URL+":4000"
+        private const val baseUrl:String = BuildConfig.SERVER_BASE_URL
         private lateinit var INSTANCE: LocationSender
 
         fun getInstance(): LocationSender {
