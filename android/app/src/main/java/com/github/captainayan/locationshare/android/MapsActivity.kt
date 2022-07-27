@@ -94,7 +94,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     .icon(BitmapDescriptorFactory
                         .defaultMarker(BitmapDescriptorFactory.HUE_AZURE)))!!
 
-                polylineOptions.add(location).color(resources.getColor(R.color.white, null))
+                polylineOptions.add(location).color(resources.getColor(R.color.dark_grey, null))
             }
             else {
                 zoom = mMap.cameraPosition.zoom
@@ -114,7 +114,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             .icon(BitmapDescriptorFactory
                                 .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))!!
 
-                    polylineOptions.add(location).color(resources.getColor(R.color.white, null))
+                    polylineOptions.add(location).color(resources.getColor(R.color.dark_grey, null))
                 }
 
             }
