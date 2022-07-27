@@ -1,9 +1,11 @@
 {
-
   "name": "location-share-backend",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1"
+  },
   "description": "",
   "engines": {
     "node": "16.x"
@@ -15,7 +17,6 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.1",
-    "express-handlebars": "^6.0.6",
     "socket.io": "^4.5.1"
   }
 }
