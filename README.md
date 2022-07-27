@@ -1,6 +1,6 @@
 <p align="center">
+  <img src="https://github.com/captainayan/location-share/blob/main/logo.png?raw=true" width="96px"/>
   <h1 align="center">Location Share 🗺️</h1>
-
   <p align="center">
     An app that lets you share your location with your friends.
     <br />
