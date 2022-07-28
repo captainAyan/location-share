@@ -87,41 +87,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val location = LatLng(lat, lng)
 
         runOnUiThread {
-
-            if (polylineOptions.points.size == 0) {
-                currentMarker = mMap.addMarker(MarkerOptions().position(location)
-                    .title("Starting Location")
-                    .icon(BitmapDescriptorFactory
-                        .defaultMarker(BitmapDescriptorFactory.HUE_AZURE)))!!
-
-                polylineOptions.add(location).color(resources.getColor(R.color.dark_grey, null))
-            }
-            else {
-                zoom = mMap.cameraPosition.zoom
-
+            if(polylineOptions.points.size != 0) { // everyone after the first one
                 val distance: Double = Utility.getLocationDifference(currentMarker.position.latitude,
-                    currentMarker.position.longitude,
-                    lat,
-                    lng)
+                    currentMarker.position.longitude, lat, lng)
 
-
-                if(distance > LOCATION_NOISE_THRESHOLD) {
-
-                    currentMarker.remove()
-
-                    currentMarker =
-                        mMap.addMarker(MarkerOptions().position(location).title("Current Location")
-                            .icon(BitmapDescriptorFactory
-                                .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))!!
-
-                    polylineOptions.add(location).color(resources.getColor(R.color.dark_grey, null))
+                if(distance < LOCATION_NOISE_THRESHOLD) {
+                    return@runOnUiThread
                 }
 
+                currentMarker.remove()
+                zoom = mMap.cameraPosition.zoom
             }
 
-//            polylineOptions.add(location).color(resources.getColor(R.color.white, null))
-            mMap.addPolyline(polylineOptions)
+            currentMarker = mMap.addMarker(MarkerOptions().position(location)
+                .title("Current Location")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)))!!
 
+            polylineOptions.add(location).color(resources.getColor(R.color.dark_grey, null))
+            mMap.addPolyline(polylineOptions)
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, zoom))
         }
 
