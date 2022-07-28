@@ -55,6 +55,7 @@ dependencies {
 
     implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
     implementation 'io.github.g00fy2.quickie:quickie-bundled:1.5.0'
+    implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
 
     def retrofit_version = "2.9.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
