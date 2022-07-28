@@ -105,7 +105,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             polylineOptions.add(location).color(resources.getColor(R.color.dark_grey, null))
             mMap.addPolyline(polylineOptions)
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, zoom))
+
+            val cameraPosition: CameraPosition = CameraPosition.Builder().target(LatLng(location.latitude, location.longitude)).zoom(zoom).build()
+            val cu = CameraUpdateFactory.newCameraPosition(cameraPosition)
+            mMap.animateCamera(cu)
         }
 
     }
