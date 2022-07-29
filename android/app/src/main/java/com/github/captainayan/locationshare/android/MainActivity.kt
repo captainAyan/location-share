@@ -1,8 +1,10 @@
 package com.github.captainayan.locationshare.android
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.location.LocationManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -30,6 +32,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, EasyPermissions.
 
     private val PERMISSION_LOCATION_REQUEST_CODE: Int = 1
 
+    private var lm: LocationManager? = null;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -55,6 +59,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, EasyPermissions.
 
         if(!LocationService.IS_SERVICE_RUNNING) trackerBtn.text="Start Tracker"
         else trackerBtn.text="Stop Tracker"
+        
+        lm = this.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
     }
 
@@ -66,8 +72,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, EasyPermissions.
         else if(trackerBtn.id == view?.id) {
             if(!LocationService.IS_SERVICE_RUNNING) {
                 if(EasyPermissions.hasPermissions(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                    LocationService.startService(this, "Location Service is running...")
-                    (view as Button).text="Stop Tracker"
+                    if (lm?.isProviderEnabled(LocationManager.GPS_PROVIDER) == true) {
+                        LocationService.startService(this, "Location Service is running...")
+                        (view as Button).text="Stop Tracker"
+                    }
+                    else {
+                        Toast.makeText(this, "Turn on GPS.", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 else {
                     Toast.makeText(this, "Location permission not granted", Toast.LENGTH_SHORT).show()
