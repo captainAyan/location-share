@@ -3,6 +3,9 @@ package com.github.captainayan.locationshare.android
 import Utility
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.captainayan.locationshare.android.databinding.ActivityMapsBinding
@@ -11,13 +14,18 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.android.material.appbar.MaterialToolbar
 import io.socket.client.IO
 import io.socket.client.Socket
 import org.json.JSONObject
 import java.net.URISyntaxException
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+
+    private lateinit var toolbar: MaterialToolbar
 
     private val LOCATION_NOISE_THRESHOLD: Double = 0.0004 // IMPORTANT tune the threshold
 
@@ -32,11 +40,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var url: String = BuildConfig.SERVER_BASE_URL+"/?uuid="
     private var mSocket: Socket? = null
 
+    private lateinit var longitudeTv: TextView
+    private lateinit var latitudeTv: TextView
+    private lateinit var lastUpdateTv: TextView
+    private lateinit var watcherTv: TextView
+    private lateinit var stopTrackingBtn: Button
+
+    private val sdf = SimpleDateFormat("yyyy.MM.dd 'at' HH:mm:ss z")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityMapsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_maps)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -46,8 +60,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         uuid = intent.getStringExtra("uuid").toString()
         url += uuid
 
-        Toast.makeText(this, url, Toast.LENGTH_SHORT).show()
+        toolbar = findViewById<View>(R.id.topAppBar) as MaterialToolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "Tracking Friend"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener { this@MapsActivity.finish() }
 
+        longitudeTv = findViewById<TextView>(R.id.longitudeTv)
+        latitudeTv = findViewById<TextView>(R.id.latitudeTv)
+        lastUpdateTv = findViewById<TextView>(R.id.lastUpdateTv)
+        watcherTv = findViewById<TextView>(R.id.watcherTv)
+
+        stopTrackingBtn = findViewById<Button>(R.id.stopTrackingBtn)
+
+        stopTrackingBtn.setOnClickListener {
+            finish()
+        }
 
         try {
             mSocket = IO.socket(url)
@@ -109,6 +137,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val cameraPosition: CameraPosition = CameraPosition.Builder().target(LatLng(location.latitude, location.longitude)).zoom(zoom).build()
             val cu = CameraUpdateFactory.newCameraPosition(cameraPosition)
             mMap.animateCamera(cu)
+
+            longitudeTv.text = location.longitude.toString()
+            latitudeTv.text = location.latitude.toString()
+            lastUpdateTv.text = sdf.format(Date())
         }
 
     }
