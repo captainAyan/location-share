@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer
@@ -21,6 +22,7 @@ class ChooseFriendActivity: AppCompatActivity() {
     private lateinit var friendList: ArrayList<DB.Friend>
     private lateinit var adapter: FriendsList.FriendAdapter
     private lateinit var recyclerView: RecyclerView
+    private lateinit var emptyView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,8 @@ class ChooseFriendActivity: AppCompatActivity() {
 
         recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        emptyView = findViewById<TextView>(R.id.empty_view)
 
         adapter = FriendsList.FriendAdapter(friendList,
             {position -> onTrackButtonClick(position)},
@@ -53,6 +57,8 @@ class ChooseFriendActivity: AppCompatActivity() {
         adapter.mList.addAll(friendDao.getAll() as ArrayList<DB.Friend>)
 
         adapter.notifyItemRangeChanged(0, adapter.mList.size)
+
+        emptyViewVisibility()
     }
 
     private fun onTrackButtonClick(position: Int) {
@@ -68,6 +74,8 @@ class ChooseFriendActivity: AppCompatActivity() {
         adapter.mList.removeAt(index)
         adapter.notifyItemRemoved(index)
         adapter.notifyItemRangeChanged(index, adapter.mList.size)
+
+        emptyViewVisibility()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -82,6 +90,11 @@ class ChooseFriendActivity: AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun emptyViewVisibility() {
+        if (adapter.mList.size == 0) emptyView.visibility = View.VISIBLE
+        else emptyView.visibility = View.INVISIBLE
     }
 
 }
