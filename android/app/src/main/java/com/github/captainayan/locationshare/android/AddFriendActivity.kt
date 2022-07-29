@@ -72,6 +72,7 @@ class AddFriendActivity: AppCompatActivity(), View.OnClickListener {
             else {
                 friendDao.insert(DB.Friend(name, uuid))
                 Toast.makeText(this, "Friend saved", Toast.LENGTH_LONG).show()
+                finish()
             }
         }
     }
