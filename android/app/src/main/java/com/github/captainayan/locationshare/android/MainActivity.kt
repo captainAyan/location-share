@@ -3,7 +3,6 @@ package com.github.captainayan.locationshare.android
 import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.location.LocationManager
 import android.os.Bundle
 import android.view.Menu
@@ -12,11 +11,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.preference.PreferenceManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.vmadalin.easypermissions.EasyPermissions
 import com.vmadalin.easypermissions.dialogs.SettingsDialog
-import java.util.*
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, EasyPermissions.PermissionCallbacks{
@@ -28,8 +25,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, EasyPermissions.
     private lateinit var trackFriend: Button
     private lateinit var trackerBtn: Button
 
-    private lateinit var sharedPreferences: SharedPreferences
-
     private val PERMISSION_LOCATION_REQUEST_CODE: Int = 1
 
     private var lm: LocationManager? = null;
@@ -40,11 +35,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, EasyPermissions.
 
         if(!hasLocationPermissions()) {
             requestLocationPermission()
-        }
-
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        if (sharedPreferences.getString("uuid", "") == "") {
-            sharedPreferences.edit().putString("uuid", UUID.randomUUID().toString()).apply()
         }
 
         toolbar = findViewById<MaterialToolbar>(R.id.topAppBar)
