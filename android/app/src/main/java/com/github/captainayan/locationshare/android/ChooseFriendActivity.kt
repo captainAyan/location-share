@@ -31,10 +31,10 @@ class ChooseFriendActivity: AppCompatActivity() {
         friendDao = DB.FriendDatabase.getDatabase(this).friendDao()
         friendList = ArrayList<DB.Friend>()
 
-        recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+        recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        emptyView = findViewById<TextView>(R.id.empty_view)
+        emptyView = findViewById<TextView>(R.id.emptyView)
 
         adapter = FriendsList.FriendAdapter(friendList,
             {position -> onTrackButtonClick(position)},

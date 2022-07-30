@@ -40,10 +40,10 @@ class FriendsList {
         }
 
         class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val nameTv: TextView = itemView.findViewById(R.id.name_tv)
-            val uuidTv: TextView = itemView.findViewById(R.id.uuid_tv)
-            val trackBtn: Button = itemView.findViewById(R.id.track_friend_btn)
-            val deleteBtn: Button = itemView.findViewById(R.id.delete_friend_btn)
+            val nameTv: TextView = itemView.findViewById(R.id.nameTv)
+            val uuidTv: TextView = itemView.findViewById(R.id.uuidTv)
+            val trackBtn: Button = itemView.findViewById(R.id.trackFriendBtn)
+            val deleteBtn: Button = itemView.findViewById(R.id.deleteFriendBtn)
         }
     }
 }

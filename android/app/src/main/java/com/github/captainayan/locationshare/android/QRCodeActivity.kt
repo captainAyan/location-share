@@ -39,9 +39,9 @@ class QRCodeActivity : AppCompatActivity(){
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         uuid = sharedPreferences.getString("uuid", "").toString()
 
-        qrCodeIV = findViewById<ImageView>(R.id.qr_code_view);
-        generateNewCodeBtn = findViewById<Button>(R.id.generate_new_code_btn)
-        uuidTV = findViewById<TextView>(R.id.uuid_tv)
+        qrCodeIV = findViewById<ImageView>(R.id.qrCodeView);
+        generateNewCodeBtn = findViewById<Button>(R.id.generateNewCodeBtn)
+        uuidTV = findViewById<TextView>(R.id.uuidTv)
 
         this.showQRCode(uuid)
 

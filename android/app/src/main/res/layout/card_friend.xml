@@ -27,7 +27,7 @@
 
             <!-- Title, secondary and supporting text -->
             <TextView
-                android:id="@+id/name_tv"
+                android:id="@+id/nameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Friend Name"
@@ -35,7 +35,7 @@
                 android:textColor="@color/black"
                 />
             <TextView
-                android:id="@+id/uuid_tv"
+                android:id="@+id/uuidTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="UUID"
@@ -55,7 +55,7 @@
             android:layout_marginBottom="8dp"
             android:orientation="horizontal">
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/track_friend_btn"
+                android:id="@+id/trackFriendBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -65,7 +65,7 @@
                 app:rippleColor="@color/dark_grey"
                 />
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/delete_friend_btn"
+                android:id="@+id/deleteFriendBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Delete"

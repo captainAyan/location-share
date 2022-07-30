@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-        app:layout_constraintBottom_toTopOf="@id/submit_btn">
+        app:layout_constraintBottom_toTopOf="@id/submitBtn">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -61,7 +61,7 @@
                 app:layout_constraintTop_toBottomOf="@id/heading" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/name_txt_fld"
+                android:id="@+id/nameTxtFld"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -72,31 +72,31 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name_txt_inp"
+                    android:id="@+id/nameTxtInp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLength="20"
                     android:maxLines="1"
                     android:lines="1"
                     android:singleLine="true"
-                    android:nextFocusForward="@id/uuid_txt_inp"/>
+                    android:nextFocusForward="@id/uuidTxtInp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/uuid_txt_fld"
+                android:id="@+id/uuidTxtFld"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="UUID"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintTop_toBottomOf="@id/name_txt_fld"
-                app:layout_constraintEnd_toStartOf="@id/qr_code_btn"
+                app:layout_constraintTop_toBottomOf="@id/nameTxtFld"
+                app:layout_constraintEnd_toStartOf="@id/qrCodeBtn"
                 app:layout_constraintStart_toStartOf="parent"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/uuid_txt_inp"
+                    android:id="@+id/uuidTxtInp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLength="36"
@@ -107,21 +107,21 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
-                android:id="@+id/qr_code_btn"
+                android:id="@+id/qrCodeBtn"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/ic_qr_code_scanner"
                 android:backgroundTint="@color/black"
-                app:layout_constraintTop_toTopOf="@id/uuid_txt_fld"
-                app:layout_constraintBottom_toBottomOf="@id/uuid_txt_fld"
+                app:layout_constraintTop_toTopOf="@id/uuidTxtFld"
+                app:layout_constraintBottom_toBottomOf="@id/uuidTxtFld"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <Button
-        android:id="@+id/submit_btn"
+        android:id="@+id/submitBtn"
         style="@style/ButtonPrimary"
         android:layout_width="match_parent"
         android:layout_height="64dp"

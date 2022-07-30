@@ -31,10 +31,10 @@ class AddFriendActivity: AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_friend)
 
-        nameInput = findViewById<TextInputEditText>(R.id.name_txt_inp)
-        uuidInput = findViewById<TextInputEditText>(R.id.uuid_txt_inp)
-        qrCodeBtn = findViewById<ImageButton>(R.id.qr_code_btn)
-        submitBtn = findViewById<Button>(R.id.submit_btn)
+        nameInput = findViewById<TextInputEditText>(R.id.nameTxtInp)
+        uuidInput = findViewById<TextInputEditText>(R.id.uuidTxtInp)
+        qrCodeBtn = findViewById<ImageButton>(R.id.qrCodeBtn)
+        submitBtn = findViewById<Button>(R.id.submitBtn)
 
         friendDao = DB.FriendDatabase.getDatabase(this).friendDao()
 

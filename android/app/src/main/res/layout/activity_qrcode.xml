@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
         <TextView
             android:id="@+id/heading"
@@ -57,12 +57,12 @@
             app:layout_constraintTop_toBottomOf="@id/heading" />
 
         <ImageView
-            android:id="@+id/qr_code_view"
+            android:id="@+id/qrCodeView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             app:layout_constraintDimensionRatio="1"
-            app:layout_constraintBottom_toTopOf="@+id/generate_new_code_btn"
+            app:layout_constraintBottom_toTopOf="@id/generateNewCodeBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/body"
@@ -70,17 +70,17 @@
             android:contentDescription="UUID QR Code" />
 
         <TextView
-            android:id="@+id/uuid_tv"
+            android:id="@+id/uuidTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="UUID"
             android:textAlignment="center"
             android:layout_marginTop="8dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
-            app:layout_constraintTop_toBottomOf="@+id/qr_code_view" />
+            app:layout_constraintTop_toBottomOf="@id/qrCodeView" />
 
         <Button
-            android:id="@+id/generate_new_code_btn"
+            android:id="@+id/generateNewCodeBtn"
             style="@style/ButtonPrimary"
             android:layout_width="match_parent"
             android:layout_height="64dp"

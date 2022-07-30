@@ -41,8 +41,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, EasyPermissions.
         setSupportActionBar(toolbar)
         supportActionBar?.title = ""
 
-        trackFriend = findViewById<Button>(R.id.track_a_friend_btn)
-        trackerBtn = findViewById<Button>(R.id.tracker_btn)
+        trackFriend = findViewById<Button>(R.id.trackAFriendBtn)
+        trackerBtn = findViewById<Button>(R.id.trackerBtn)
 
         trackFriend.setOnClickListener(this)
         trackerBtn.setOnClickListener(this)
