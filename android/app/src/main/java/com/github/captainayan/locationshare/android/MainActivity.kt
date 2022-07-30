@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, EasyPermissions.
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         if (item.itemId == R.id.main_menu_settings) {
-            startActivity(Intent(this@MainActivity, QRCodeActivity::class.java))
+            startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
             return true
         }
         return super.onOptionsItemSelected(item)

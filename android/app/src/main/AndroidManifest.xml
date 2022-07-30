@@ -15,6 +15,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChooseFriendActivity"
             android:exported="false" />
         <activity
@@ -25,8 +28,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".SplashScreen"
             android:exported="true"
@@ -55,20 +57,18 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="${GMP_KEY}" />
 
-        <service android:name=".LocationService"
-            android:foregroundServiceType="location"
-            />
+        <service
+            android:name=".LocationService"
+            android:foregroundServiceType="location" />
     </application>
 
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

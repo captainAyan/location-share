@@ -4,4 +4,5 @@
     <string name="title_text">Track \nYour \n<b>Location</b></string>
     <string name="uuid_text">This is the UUID (Universally Unique Identifiers) that was generated on the first time you opened the app. Share this UUID with people whom you want to share your location with. You can regenerate the UUID when ever you want.</string>
     <string name="add_friend_instructions">Enter the friend name, copy the <b>UUID</b> from your friends app and paste it in here, or just use the QR code scanner.</string>
+    <string name="version">1.0.0-alpha01</string>
 </resources>

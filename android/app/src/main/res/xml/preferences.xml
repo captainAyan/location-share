@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference app:title="View UUID"/>
+
+    <PreferenceCategory
+        app:icon="@drawable/ic_info"
+        app:title="Information">
+
+        <Preference
+            app:title="Version"
+            app:summary="@string/version"/>
+
+        <Preference app:title="Open source"/>
+        <Preference app:title="Privacy Policy"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
