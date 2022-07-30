@@ -21,7 +21,6 @@ class SettingsActivity: AppCompatActivity() {
 
         toolbar = findViewById<View>(R.id.topAppBar) as MaterialToolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Settings"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener { this@SettingsActivity.finish() }
 

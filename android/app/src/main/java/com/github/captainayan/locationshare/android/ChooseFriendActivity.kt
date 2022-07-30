@@ -45,7 +45,6 @@ class ChooseFriendActivity: AppCompatActivity() {
 
         toolbar = findViewById<View>(R.id.topAppBar) as MaterialToolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Choose A Friend"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener { this@ChooseFriendActivity.finish() }
     }

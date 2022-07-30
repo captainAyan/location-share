@@ -62,7 +62,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         toolbar = findViewById<View>(R.id.topAppBar) as MaterialToolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Tracking Friend"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener { this@MapsActivity.finish() }
 
