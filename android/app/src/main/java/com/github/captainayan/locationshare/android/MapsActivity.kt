@@ -85,7 +85,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 val lng:Double = json.get("lng").toString().toDouble()
                 val lat:Double = json.get("lat").toString().toDouble()
-                this.newLocation(lat, lng)
+                val totalTrackers: Int = json.get("total_trackers").toString().toInt()
+                this.newLocation(lat, lng, totalTrackers)
 
             }
         } catch (e: URISyntaxException) {
@@ -108,7 +109,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mSocket?.disconnect()
     }
 
-    private fun newLocation (lat:Double, lng:Double) {
+    private fun newLocation (lat:Double, lng:Double, totalTrackers:Int) {
         Log.e("MAP ACTIVITY", "onCreate: GOT LOCATION")
 
         val location = LatLng(lat, lng)
@@ -140,6 +141,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             longitudeTv.text = location.longitude.toString()
             latitudeTv.text = location.latitude.toString()
             lastUpdateTv.text = sdf.format(Date())
+            watcherTv.text = totalTrackers.toString()
         }
 
     }
