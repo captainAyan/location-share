@@ -1,6 +1,7 @@
 const express = require("express");
-const app = express();
 const http = require("http");
+
+const app = express();
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 
@@ -10,7 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 
 const io = new Server(server);
 
-var sockets = [];
+let trackees = [];
 
 app.post("/sendlocation", (req, res) => {
   const id = req.headers.uuid;
@@ -19,44 +20,39 @@ app.post("/sendlocation", (req, res) => {
     `LOC UPDATE :: ${id} -> LAT:${req.body.lat} LNG:${req.body.lng}`
   );
 
-  if (sockets[id])
-    sockets[id].sockets.map((socket) => [
-      socket.emit("chat message", req.body),
+  if (trackees[id])
+    trackees[id].trackers.map((socket) => [
+      socket.emit("chat message", {
+        ...req.body,
+        total_trackers: trackees[id].trackers.length,
+      }),
     ]);
-  res.sendStatus(200);
+  res.status(200).send({ total_trackers: trackees[id]?.trackers.length });
 });
 
 io.of("/").on("connection", (socket) => {
-  var id = socket.handshake.query.uuid;
+  const { uuid } = socket.handshake.query;
 
-  console.log(Date(), `TRACKING   :: ${id}`);
+  console.log(Date(), `TRACKING   :: ${uuid}`);
 
-  if (!id || !sockets[id]) {
-    sockets[id] = {
-      id,
-      sockets: [socket],
+  if (!uuid || !trackees[uuid]) {
+    trackees[uuid] = {
+      id: uuid,
+      trackers: [socket],
     };
-  } else sockets[id].sockets.push(socket);
+  } else trackees[uuid].trackers.push(socket);
 
-  socket.on("disconnect", (e) => {
-    sockets[socket.handshake.query.uuid].sockets = sockets[
-      socket.handshake.query.uuid
-    ].sockets.filter((s) => s.id !== socket.id);
-
-    console.log(
-      Date(),
-      `DISCONNECT :: ${sockets[socket.handshake.query.uuid].id}`
+  socket.on("disconnect", () => {
+    trackees[uuid].trackers = trackees[uuid].trackers.filter(
+      (s) => s.id !== socket.id
     );
 
-    if (sockets[socket.handshake.query.uuid].sockets.length === 0) {
-      console.log(
-        Date(),
-        `NO TRACKER :: ${sockets[socket.handshake.query.uuid].id}`
-      );
+    console.log(Date(), `DISCONNECT :: ${uuid}`);
 
-      sockets = sockets.filter(
-        (socket) => socket.id !== socket.handshake.query.uuid
-      );
+    if (trackees[uuid].trackers.length === 0) {
+      console.log(Date(), `NO TRACKER :: ${trackees[uuid].id}`);
+
+      trackees = trackees.filter((trackee) => trackee.id !== uuid);
     }
   });
 });
