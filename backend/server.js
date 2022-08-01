@@ -1,5 +1,9 @@
 const express = require("express");
 const http = require("http");
+const rateLimit = require("express-rate-limit");
+const helmet = require("helmet");
+
+require("dotenv").config();
 
 const app = express();
 const server = http.createServer(app);
@@ -12,6 +16,17 @@ app.use(express.urlencoded({ extended: false }));
 const io = new Server(server);
 
 let trackees = [];
+
+app.use(helmet());
+
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  max: process.env.NODE_ENV === "production" ? 30 : false,
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (_, res) => res.sendStatus(429),
+});
+app.use(limiter); // limits all paths
 
 app.post("/sendlocation", (req, res) => {
   const id = req.headers.uuid;
