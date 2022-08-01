@@ -4,7 +4,7 @@
   <p align="center">
     An app that lets you share your location with your friends.
     <br />
-    <a href="#">Landing Page</a>
+    <a href="https://github.com/captainAyan/location-share/releases/latest">Download</a>
     ·
     <a href="https://github.com/captainAyan/location-share/issues">Report Bug 😓</a>
   </p>
@@ -28,6 +28,9 @@ Location Share is an Android app that lets you share your location with your fri
 
 ## Demo
 🚧 Work in progress
+
+## Poster
+![App Poster](https://github.com/captainayan/location-share/blob/main/poster.png?raw=true)
 
 ## Contribution
 Just send me a pull request. Mention your discord or instagram id.
