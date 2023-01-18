@@ -46,6 +46,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'com.github.captainayan.locationshare.android'
 }
 
 dependencies {
