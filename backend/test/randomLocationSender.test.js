@@ -5,10 +5,12 @@
  */
 
 const axios = require("axios").default;
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" });
 
 const { UUID, BASE_URL, LOCAL_BASE_URL, NODE_ENV } = process.env;
 const LOCATION_SENDER_ROUTE = "/sendlocation";
+
+console.log(UUID);
 
 const MIN_ANGLE = 45;
 const MAX_ANGLE = 135;
