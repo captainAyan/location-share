@@ -11,7 +11,7 @@
 </p>
 
 ## About
-Location Share is an Android app that lets you share your location with your friends anonymously. It require not login or signup to use the app. Friends are added using QR Code and save in the user's device locally.
+Location Share is an Android app that lets you share your location with your friends anonymously. It doesn't require login or signup to use the app. Friends are added using QR Code and saved in the user's device locally.
 
 ## Getting Started
 🚧 Work in progress
